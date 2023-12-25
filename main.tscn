@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cexm0dfk6hg0a"]
+
+[ext_resource type="PackedScene" uid="uid://c6cjwpd0kppok" path="res://level_1.tscn" id="1_857k3"]
+[ext_resource type="PackedScene" uid="uid://4mj26u6l6qeu" path="res://player.tscn" id="1_e4f0o"]
+[ext_resource type="PackedScene" uid="uid://c58caschd6kcd" path="res://parallax_background..tscn" id="3_p4mbl"]
+[ext_resource type="PackedScene" uid="uid://ccymk2l3pasyf" path="res://frog.tscn" id="4_kronp"]
+
+[node name="Main" type="Node"]
+
+[node name="Level_1" parent="." instance=ExtResource("1_857k3")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_p4mbl")]
+
+[node name="Player" parent="." instance=ExtResource("1_e4f0o")]
+
+[node name="Frog" parent="." instance=ExtResource("4_kronp")]
+position = Vector2(443, 356)

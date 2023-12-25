@@ -1,0 +1,13 @@
+CollisionShape2D
+Area2D
+AnimatedSprite2D
+CharacterBody2D
+Smoothing2D
+TextureRect
+SubViewport
+ParallaxLayer
+ParallaxBackground
+AnimationPlayer
+Camera2D
+TileMap
+Node

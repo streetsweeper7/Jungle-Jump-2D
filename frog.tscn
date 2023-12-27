@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ccymk2l3pasyf"]
+[gd_scene load_steps=18 format=3 uid="uid://ccymk2l3pasyf"]
 
 [ext_resource type="Texture2D" uid="uid://dwql226hp2yk4" path="res://assets/sprites/enemy-death/enemy-death-1.png" id="1_1dkuk"]
 [ext_resource type="Script" path="res://frog.gd" id="1_e76c7"]
@@ -35,7 +35,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_2bfnf")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -77,13 +77,17 @@ radius = 10.0499
 [sub_resource type="CircleShape2D" id="CircleShape2D_mhio2"]
 radius = 91.022
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00t4x"]
+size = Vector2(18, 7)
+
 [node name="Frog" type="CharacterBody2D"]
 script = ExtResource("1_e76c7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvqwv")
-animation = &"idle"
-frame_progress = 0.707626
+animation = &"death"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
@@ -95,4 +99,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDectection"]
 shape = SubResource("CircleShape2D_mhio2")
 
+[node name="Head" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+position = Vector2(-1, -10.5)
+shape = SubResource("RectangleShape2D_00t4x")
+
 [connection signal="body_entered" from="PlayerDectection" to="." method="_on_player_dectection_body_entered"]
+[connection signal="body_entered" from="Head" to="." method="_on_head_body_entered"]

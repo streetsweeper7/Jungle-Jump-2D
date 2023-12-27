@@ -12,6 +12,8 @@ enum State {IDLE, JUMP, RUN, WALK, CROUCH, CLIMB}
 var current_state = State.IDLE
 var state_changed: bool = false
 
+var previous_speed:Vector2
+
 @onready var anim = get_node("AnimationPlayer")
 
 func change_state(final_state):
@@ -75,3 +77,15 @@ func _physics_process(delta):
 		$AnimatedSprite2D.set_flip_h(false)
 		
 	move_and_slide()
+	# set the previous speed to non zero values
+	if velocity.length() > 0:
+		previous_speed = velocity
+	
+func update_velocity(velocity):
+	set_velocity(velocity)
+	
+func set_status(state):
+	current_state = state
+
+func get_prev_velocity():
+	return previous_speed

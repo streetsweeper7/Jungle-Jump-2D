@@ -25,6 +25,7 @@ func change_state(final_state):
 	
 func _ready():
 	current_state = State.IDLE
+	Globals.player = self
 
 
 func _physics_process(delta):
